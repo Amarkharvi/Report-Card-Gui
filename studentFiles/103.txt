@@ -1,0 +1,12 @@
+Student RollNo:103
+Student Name:xyz
+Class:6
+Sec:s
+Sub1:78
+Sub2:98
+Sub3:65
+Sub4:89
+Sub5:09
+Sub6:67
+Total:330
+Percentage:55.00%
