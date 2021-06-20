@@ -312,6 +312,9 @@ class Toplevel2:
         self.Button1.configure(borderwidth="3")
         self.Button1.configure(font=font13)
         self.Button1.configure(text='''Add''')
+        
+        
+        
         # add student details 
         def addStudent(self):
             #clear total and %-age field
@@ -331,8 +334,7 @@ class Toplevel2:
                 value1=StringVar()
                 value2=StringVar()
                 #calculate the total of 6 subjects
-                totalvalue=int(self.Entry5.get())+int(self.Entry6.get())+int(self.Entry7.get())+int(self.Entry8.get())
-                +int(self.Entry9.get())+int(self.Entry10.get())
+                totalvalue=int(self.Entry5.get())+int(self.Entry6.get())+int(self.Entry7.get())+int(self.Entry8.get())+int(self.Entry9.get())+int(self.Entry10.get())
                 
                 # now make total and %-age field as non editable
                 self.Entry11.configure(textvariable=value1,foreground="black")
@@ -361,7 +363,7 @@ class Toplevel2:
 
                 #place your own path and create a folder named studentFiles 
 
-                path_to_file=pjoin("/","home","lonewolf","srcs_project","studentFiles",rollno_file)
+                path_to_file=pjoin("/","home","lonewolf","Documents/repo/Report-Card-Gui","studentFiles",rollno_file)
 
                 #now open the rollno file and enter the entries in it.
                 with open(path_to_file,"w") as wr:
@@ -389,6 +391,9 @@ class Toplevel2:
         self.Button2.configure(borderwidth="3")
         self.Button2.configure(font=font12)
         self.Button2.configure(text='''Clear''')
+        
+        
+        
         def clearDetails(self):
             #clear all the text present in the enrty fields
             self.Entry1.delete(0,tk.END)
@@ -404,6 +409,9 @@ class Toplevel2:
             self.Entry11.delete(0,tk.END)
             self.Entry12.delete(0,tk.END)
 
+       
+       
+       
         self.Button2.configure(command=lambda:clearDetails(self))    
 
         self.Button3 = tk.Button(top)
@@ -411,16 +419,22 @@ class Toplevel2:
         self.Button3.configure(borderwidth="3")
         self.Button3.configure(font=font12)
         self.Button3.configure(text='''Delete''')
+       
+       
+       
         def deleteStudent(self):
             import os
             #to delete file fetch the rollno from entry1
             delFile=self.Entry1.get()
-            if os.path.isfile('/home/lonewolf/srcs_project/studentFiles/'+delFile+'.txt')==True:
-                os.remove('/home/lonewolf/srcs_project/studentFiles/'+delFile+'.txt')
+            if os.path.isfile('/home/lonewolf/Documents/repo/Report-Card-Gui/studentFiles/'+delFile+'.txt')==True:
+                os.remove('/home/lonewolf/Documents/repo/Report-Card-Gui/studentFiles/'+delFile+'.txt')
                 mb.showinfo(title="Data Deletion",message="Data Deleted")
             else:
                 mb.showinfo(title="File Not Found",message="No Data Found")
     
+       
+       
+       
         self.Button3.configure(command=lambda:deleteStudent(self))
         self.TSeparator2 = ttk.Separator(top)
         self.TSeparator2.place(relx=0.453, rely=0.14, relheight=0.75)
@@ -454,24 +468,30 @@ class Toplevel2:
         self.Button4.configure(borderwidth="3")
         self.Button4.configure(font=font12)
         self.Button4.configure(text='''View Data''')
+       
+       
+       
         def viewData(self):
             #clear the previous content in the listbox
             self.Listbox1.delete(0,tk.END)
             import os
             #list all files in the studentFiles directory
-            flist=os.listdir('/home/lonewolf/srcs_project/studentFiles/')
+            flist=os.listdir('/home/lonewolf/Documents/repo/Report-Card-Gui/studentFiles/')
             flist.sort()
             for item in flist:
                 #insert all the files present in studentFiles into the listbox
                 self.Listbox1.insert(tk.END,item)
 
+       
+       
+       
         def showContent(event):
             #curserselection
             x=self.Listbox1.curselection()[0]
             #get the value of the selection index
             file=self.Listbox1.get(x)
             from os.path import join as pjoin
-            pathfile=pjoin("/","home","lonewolf","srcs_project","studentFiles/"+file)
+            pathfile=pjoin("/","home","lonewolf","Documents","repo/Report-Card-Gui","studentFiles/"+file)
             with open(pathfile,'r') as file:
                 #read the content of the file
                 file=file.read()
